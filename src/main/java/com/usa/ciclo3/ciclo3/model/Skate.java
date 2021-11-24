@@ -1,7 +1,7 @@
 package com.usa.ciclo3.ciclo3.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Data;
+/*import lombok.Data;*/
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -9,7 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name="skate")
-@Data
+/*@Data*/
 public class Skate implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +32,7 @@ public class Skate implements Serializable {
     @JsonIgnoreProperties({"skate", "client"})
     public List<Reservation> reservations;
 
-/*    public Integer getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -94,5 +94,5 @@ public class Skate implements Serializable {
 
     public void setReservations(List<Reservation> reservations) {
         this.reservations = reservations;
-    }*/
+    }
 }

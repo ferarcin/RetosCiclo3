@@ -13,18 +13,19 @@ public class Reservation {
     private Integer idReservation;
     private Date startDate;
     private Date devolutionDate;
-    private String status;
-    private String score;
+    private String status="created";
 
     @ManyToOne
     @JoinColumn(name = "idSkate")
-    @JsonIgnoreProperties("reservations")
+    @JsonIgnoreProperties({"reservations"})
     private Skate skate;
 
     @ManyToOne
     @JoinColumn(name="idClient")
-    @JsonIgnoreProperties("reservations")
+    @JsonIgnoreProperties({"reservations", "messages"})
     private Client client;
+
+    private String score;
 
     public Integer getIdReservation() {
         return idReservation;
