@@ -5,6 +5,10 @@ import com.usa.ciclo3.ciclo3.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -66,5 +70,23 @@ public class ReservationService {
             return true;
         }).orElse(false);
         return aRespuesta;
+    }
+
+    public List<Reservation> getReservationsPeriod(String fechaA, String fechaB) {
+        SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");
+        Date a = new Date();
+        Date b = new Date();
+        try {
+            a = parser.parse(fechaA);
+            b = parser.parse(fechaB);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        if (a.before(b)) {
+            return reservationRepository.getReservationPeriod(a, b);
+        } else {
+            return new ArrayList<>();
+        }
     }
 }

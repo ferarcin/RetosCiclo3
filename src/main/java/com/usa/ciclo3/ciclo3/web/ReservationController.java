@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,5 +42,11 @@ public class ReservationController {
     @DeleteMapping("/{id}")
     public boolean delete(@PathVariable("id") int reservationID){
         return reservationService.deleteReservation(reservationID);
+    }
+
+    @GetMapping("/report-dates/{fechaInicial}/{fechaFinal}")
+    public  List<Reservation> getRevationsReportDates(@PathVariable("fechaInicial") String fechaInicial,
+                                                      @PathVariable("fechaFinal") String fechaFinal){
+        return reservationService.getReservationsPeriod(fechaInicial, fechaFinal);
     }
 }

@@ -1,12 +1,14 @@
 package com.usa.ciclo3.ciclo3.service;
 
 import com.usa.ciclo3.ciclo3.model.Client;
+import com.usa.ciclo3.ciclo3.model.YearAmount;
 import com.usa.ciclo3.ciclo3.repository.ClientRepository;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.Column;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -69,5 +71,14 @@ public class ClientService {
             return true;
         }).orElse(false);
         return aRespuesta;
+    }
+
+    public List<YearAmount> getTopClientsByAge(){
+        List<Object[]> report=clientRepository.getTopByAge();
+        List<YearAmount> res=new ArrayList<>();
+        for(int i=0; i<report.size();i++){
+            res.add(new YearAmount((int) report.get(i)[0], (int) report.get(i)[1]));
+        }
+        return res;
     }
 }

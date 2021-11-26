@@ -27,4 +27,8 @@ public class ClientRepository {
     public void delete(Client c){
         clientCrudRepository.delete(c);
     }
+
+    public List<Object[]> getTopByAge(){
+        return clientCrudRepository.countTotalClientsByAge();
+    }
 }

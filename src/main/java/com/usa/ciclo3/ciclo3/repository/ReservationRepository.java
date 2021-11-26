@@ -6,6 +6,7 @@ import net.bytebuddy.agent.builder.ResettableClassFileTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,5 +29,9 @@ public class ReservationRepository {
 
     public void delete(Reservation r){
         reservationCrudRepository.delete(r);
+    }
+
+    public List<Reservation> getReservationPeriod(Date a, Date b){
+        return reservationCrudRepository.findAllByStartDateAfterAndStartDateBefore(a,b);
     }
 }

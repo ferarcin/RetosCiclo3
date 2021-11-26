@@ -2,6 +2,7 @@ package com.usa.ciclo3.ciclo3.web;
 
 import com.usa.ciclo3.ciclo3.model.Category;
 import com.usa.ciclo3.ciclo3.model.Client;
+import com.usa.ciclo3.ciclo3.model.YearAmount;
 import com.usa.ciclo3.ciclo3.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -43,4 +44,8 @@ public class ClientController {
         return clientService.deleteClient(cientID);
     }
 
+    @GetMapping("/report")
+    public List<YearAmount> getReport(){
+        return clientService.getTopClientsByAge();
+    }
 }
