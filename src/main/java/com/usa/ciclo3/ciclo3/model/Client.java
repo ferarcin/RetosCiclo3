@@ -16,15 +16,15 @@ public class Client implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idClient;
 
-    @NonNull
+    //@NonNull
     @Column(name= "email", nullable = false, length = 45)
     private String email;
 
-    @NonNull
+    //@NonNull
     @Column(name= "password", nullable = false, length = 45)
     private String password;
 
-    @NonNull
+    //@NonNull
     @Column(name= "name", nullable = false, length = 250)
     private String name;
     private Integer age;
@@ -36,4 +36,5 @@ public class Client implements Serializable {
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")
     @JsonIgnoreProperties({"client", "skate"})
     public List<Reservation> reservations;
+
 }

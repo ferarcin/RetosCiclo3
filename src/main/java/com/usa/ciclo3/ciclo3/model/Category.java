@@ -16,11 +16,11 @@ public class Category implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NonNull
+    //@NonNull
     @Column(name= "name", nullable = false, length = 45)
     private String name;
 
-    @NonNull
+    //@NonNull
     @Column(name= "email", nullable = false, length = 250)
     private String description;
 

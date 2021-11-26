@@ -15,7 +15,7 @@ public class Score {
 
     private Integer qualification;
 
-    @NonNull
+    //@NonNull
     @Column(name= "score", nullable = false, length = 250)
     private String score;
 

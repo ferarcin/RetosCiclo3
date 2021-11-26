@@ -15,7 +15,7 @@ public class Message implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idMessage;
 
-    @NonNull
+    //@NonNull
     @Column(name= "messageText", nullable = false, length = 250)
     private String messageText;
 
