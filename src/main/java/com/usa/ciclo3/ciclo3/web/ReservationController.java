@@ -1,5 +1,6 @@
 package com.usa.ciclo3.ciclo3.web;
 
+import com.usa.ciclo3.ciclo3.model.Client;
 import com.usa.ciclo3.ciclo3.model.Reservation;
 import com.usa.ciclo3.ciclo3.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +31,15 @@ public class ReservationController {
     @ResponseStatus(HttpStatus.CREATED)
     public Reservation save(@RequestBody Reservation r){
         return reservationService.save(r);
+    }
+
+    @PutMapping("/update")
+    public Reservation updateClient(@RequestBody Reservation reservation){
+        return reservationService.update(reservation);
+    }
+
+    @DeleteMapping("/{id}")
+    public boolean delete(@PathVariable("id") int reservationID){
+        return reservationService.deleteReservation(reservationID);
     }
 }

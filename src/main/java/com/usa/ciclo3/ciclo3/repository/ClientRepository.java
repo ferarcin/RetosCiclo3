@@ -17,10 +17,14 @@ public class ClientRepository {
     }
 
     public Optional<Client> getClient(int id){
-       return clientCrudRepository.findById(id);
+        return clientCrudRepository.findById(id);
     }
 
     public Client save(Client c){
         return clientCrudRepository.save(c);
+    }
+
+    public void delete(Client c){
+        clientCrudRepository.delete(c);
     }
 }

@@ -2,9 +2,11 @@ package com.usa.ciclo3.ciclo3.service;
 
 import com.usa.ciclo3.ciclo3.model.Client;
 import com.usa.ciclo3.ciclo3.repository.ClientRepository;
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.Column;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,4 +36,38 @@ public class ClientService {
         }
     }
 
+    public Client update(Client client){
+        if(client.getIdClient()!=null){
+          Optional<Client> c=clientRepository.getClient(client.getIdClient());
+
+          if(!c.isEmpty()){
+              if(client.getPassword()!=null){
+                  c.get().setPassword(client.getPassword());
+              }
+
+              if(client.getName()!=null){
+                  c.get().setName(client.getName());
+              }
+
+              if(client.getAge()!=null){
+                  c.get().setAge(client.getAge());
+              }
+
+              clientRepository.save(c.get());
+              return c.get();
+          }else{
+              return client;
+          }
+        }else{
+            return client;
+        }
+    }
+
+    public boolean deleteClient(int id){
+        Boolean aRespuesta = getClient(id).map(client -> {
+            clientRepository.delete(client);
+            return true;
+        }).orElse(false);
+        return aRespuesta;
+    }
 }

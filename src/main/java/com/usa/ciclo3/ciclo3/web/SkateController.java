@@ -1,5 +1,6 @@
 package com.usa.ciclo3.ciclo3.web;
 
+import com.usa.ciclo3.ciclo3.model.Client;
 import com.usa.ciclo3.ciclo3.model.Skate;
 import com.usa.ciclo3.ciclo3.service.SkateService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +31,15 @@ public class SkateController {
     @ResponseStatus(HttpStatus.CREATED)
     public Skate save(@RequestBody Skate s){
         return skateService.save(s);
+    }
+
+    @PutMapping("/update")
+    public Skate updateClient(@RequestBody Skate skate){
+        return skateService.update(skate);
+    }
+
+    @DeleteMapping("/{id}")
+    public boolean delete(@PathVariable("id") int skateID){
+        return skateService.deleteSkate(skateID);
     }
 }
