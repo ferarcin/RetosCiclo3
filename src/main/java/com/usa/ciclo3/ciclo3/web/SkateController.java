@@ -34,11 +34,13 @@ public class SkateController {
     }
 
     @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
     public Skate updateClient(@RequestBody Skate skate){
         return skateService.update(skate);
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int skateID){
         return skateService.deleteSkate(skateID);
     }

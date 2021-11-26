@@ -75,4 +75,13 @@ public class SkateService {
         }).orElse(false);
         return aRespuesta;
     }
+
+    public boolean deleteSkate2(int id){
+        Optional<Skate> s=getSkate(id);
+        if(!s.isEmpty()){
+            skateRepository.delete(s.get());
+            return true;
+        }
+        return false;
+    }
 }
