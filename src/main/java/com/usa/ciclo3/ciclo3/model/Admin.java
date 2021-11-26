@@ -6,5 +6,4 @@ import javax.persistence.Table
 @Data
 @Table (name="admin")
 public class Admin {
-
 }
