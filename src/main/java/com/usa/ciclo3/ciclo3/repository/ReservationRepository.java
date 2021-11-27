@@ -2,7 +2,6 @@ package com.usa.ciclo3.ciclo3.repository;
 
 import com.usa.ciclo3.ciclo3.model.Reservation;
 import com.usa.ciclo3.ciclo3.repository.crud.ReservationCrudRepository;
-import net.bytebuddy.agent.builder.ResettableClassFileTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -33,5 +32,9 @@ public class ReservationRepository {
 
     public List<Reservation> getReservationPeriod(Date a, Date b){
         return reservationCrudRepository.findAllByStartDateAfterAndStartDateBefore(a,b);
+    }
+
+    public List<Object[]> getReservationStatus(){
+        return reservationCrudRepository.countTotalReservationByStatus();
     }
 }

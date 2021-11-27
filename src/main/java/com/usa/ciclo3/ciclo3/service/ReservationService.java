@@ -89,4 +89,8 @@ public class ReservationService {
             return new ArrayList<>();
         }
     }
+
+    public List<Object[]> getReservationStatus(){
+        return 
+    }
 }
